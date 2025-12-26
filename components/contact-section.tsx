@@ -1,13 +1,86 @@
 'use client';
 
-import { memo } from 'react';
+import { memo, useCallback, useState } from 'react';
+import type { FormEvent } from 'react';
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Mail, MapPin, User, ArrowRight } from "lucide-react"
 import { motion } from "framer-motion"
+import emailjs from '@emailjs/browser';
+
+type SubmitStatus = 'idle' | 'sending' | 'success' | 'error';
 
 export const ContactSection = memo(function ContactSection() {
+  const [submitStatus, setSubmitStatus] = useState<SubmitStatus>('idle');
+  const [submitMessage, setSubmitMessage] = useState<string>('');
+
+  const onSubmit = useCallback(async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    setSubmitStatus('sending');
+    setSubmitMessage('');
+
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    const firstName = String(formData.get('firstName') ?? '').trim();
+    const lastName = String(formData.get('lastName') ?? '').trim();
+    const email = String(formData.get('email') ?? '').trim();
+    const phone = String(formData.get('phone') ?? '').trim();
+    const message = String(formData.get('message') ?? '').trim();
+
+    try {
+      // 1) Always store the inquiry (used by Admin -> Inquiries tab)
+      const res = await fetch('/api/inquiries', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          email,
+          phone: phone || null,
+          message,
+          sourceUrl: typeof window !== 'undefined' ? window.location.href : null,
+        }),
+      });
+
+      const payload = (await res.json().catch(() => null)) as null | { ok?: boolean; error?: string };
+      if (!res.ok || payload?.ok === false) {
+        throw new Error(payload?.error || 'Failed to submit inquiry');
+      }
+
+      // 2) Optional: send EmailJS (best-effort)
+      if (serviceId && templateId && publicKey) {
+        await emailjs.send(
+          serviceId,
+          templateId,
+          {
+            First_Name: firstName,
+            Last_Name: lastName,
+            Email: email,
+            Phone: phone,
+            Message: message,
+          },
+          { publicKey }
+        );
+      }
+
+      setSubmitStatus('success');
+      setSubmitMessage("Thanks — your message has been sent.");
+      form.reset();
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.error('EmailJS send failed:', error);
+      setSubmitStatus('error');
+      setSubmitMessage('Sorry — something went wrong sending your message. Please try again.');
+    }
+  }, []);
+
   return (
     <section id="contact" className="relative overflow-hidden bg-white pt-32 pb-24 text-slate-900 md:pt-40 md:pb-28" aria-labelledby="contact-heading">
        <div className="relative mx-auto flex w-full max-w-[1440px] flex-col gap-16 px-4 md:px-6 lg:gap-20">
@@ -114,7 +187,7 @@ export const ContactSection = memo(function ContactSection() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="lg:col-span-7 relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-8 sm:p-10 shadow-sm"
             >
-                <form className="space-y-6" aria-label="Contact form">
+              <form className="space-y-6" aria-label="Contact form" onSubmit={onSubmit}>
                     <div className="grid gap-6 md:grid-cols-2">
                         <div className="space-y-2">
                             <Label htmlFor="first-name" className="text-slate-700">First Name</Label>
@@ -150,11 +223,18 @@ export const ContactSection = memo(function ContactSection() {
 
                     <button 
                         type="submit"
-                        className="group inline-flex items-center gap-3 rounded-full bg-[#F75834] px-8 py-4 text-base font-semibold text-white transition-all hover:bg-[#e04826] focus:outline-none focus:ring-2 focus:ring-[#F75834] focus:ring-offset-2"
+                        disabled={submitStatus === 'sending'}
+                        className="group inline-flex items-center gap-3 rounded-full bg-[#F75834] px-8 py-4 text-base font-semibold text-white transition-all hover:bg-[#e04826] focus:outline-none focus:ring-2 focus:ring-[#F75834] focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
                     >
-                        Send Message
+                        {submitStatus === 'sending' ? 'Sending...' : 'Send Message'}
                         <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
                     </button>
+
+                    {submitMessage ? (
+                      <p role="status" aria-live="polite" className="text-sm text-slate-500">
+                        {submitMessage}
+                      </p>
+                    ) : null}
                 </form>
             </motion.div>
         </div>
