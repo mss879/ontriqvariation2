@@ -88,7 +88,7 @@ export function Footer() {
           <div className="flex items-center gap-2">
             <span>Made by</span>
             <Image 
-              src="/arclogo.png" 
+              src="/arcai-logo.png" 
               alt="ARC AI" 
               width={44} 
               height={44} 
