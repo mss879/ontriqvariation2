@@ -1,0 +1,21 @@
+# Netlify Configuration
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# Redirect plain domain to www
+[[redirects]]
+  from = "https://ontriq.com/*"
+  to = "https://www.ontriq.com/:splat"
+  status = 301
+  force = true
+
+# Fallback for Next.js handling (Netlify plugin usually handles this, but this is a safe default)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
