@@ -78,7 +78,7 @@ export const metadata: Metadata = {
     description: siteDescription,
     images: [
       {
-        url: '/ontriq-favicon.png',
+        url: '/share-img.png',
         width: 1200,
         height: 630,
         alt: 'Ontriq',
@@ -89,7 +89,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Ontriq | Sri Lanka\'s Premier Background Verification & HR Solutions',
     description: siteDescription,
-    images: ['/ontriq-favicon.png'],
+    images: ['/share-img.png'],
     creator: '@ontriq',
   },
   alternates: {
@@ -105,7 +105,7 @@ const jsonLd = {
   name: 'Ontriq',
   alternateName: 'Ontriq (PVT) LTD',
   url: siteUrl,
-  logo: `${siteUrl}/ontriq-favicon.png`,
+  logo: `${siteUrl}/share-img.png`,
   description: siteDescription,
   foundingDate: '2025',
   parentOrganization: {
