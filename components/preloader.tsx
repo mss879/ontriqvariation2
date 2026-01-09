@@ -37,7 +37,7 @@ export default function Preloader() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.04,
+        staggerChildren: 0.02,
       },
     },
   };
