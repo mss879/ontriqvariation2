@@ -20,7 +20,7 @@ export default function Preloader() {
     const timer = setTimeout(() => {
       setMinTimeElapsed(true);
       setVideoLoaded(true);
-    }, 2000);
+    }, 2300);
 
     return () => clearTimeout(timer);
   }, []);
@@ -37,7 +37,7 @@ export default function Preloader() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.02,
+        staggerChildren: 0.03,
       },
     },
   };
