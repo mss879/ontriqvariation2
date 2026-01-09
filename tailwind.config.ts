@@ -7,6 +7,11 @@ const config: Config = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  safelist: [
+    'animate-whyUsMarquee',
+    'animate-accordion-down',
+    'animate-accordion-up',
+  ],
   theme: {
     extend: {
       backgroundImage: {

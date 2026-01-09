@@ -52,6 +52,8 @@ export function BgvHero({ serviceNumber, title, subtitle, description }: BgvHero
                 height={400}
                 className="w-full h-auto scale-105"
                 priority
+                quality={85}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 40vw, 500px"
               />
             </div>
             

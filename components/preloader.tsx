@@ -29,7 +29,7 @@ export default function Preloader() {
     // Create a hidden video element to force preload
     const video = document.createElement('video');
     video.src = params.videoSrc;
-    video.preload = 'auto'; // Important for preloading
+    video.preload = 'metadata'; // Changed from 'auto' to reduce initial load
     
     // "canplaythrough" or "canplay" is usually enough for smooth playback start
     const onVideoReady = () => {
@@ -44,10 +44,10 @@ export default function Preloader() {
     // Start loading
     video.load();
 
-    // Fallback: If video takes too long, just proceed after 7 seconds max
+    // Fallback: If video takes too long, just proceed after 5 seconds max (reduced from 7)
     const maxWait = setTimeout(() => {
       setVideoLoaded(true);
-    }, 7000);
+    }, 5000);
 
     return () => {
       clearTimeout(timer);

@@ -76,7 +76,8 @@ const ServicesSection = () => {
                 alt=""
                 fill
                 className="object-cover"
-                loading="lazy"
+                priority
+                quality={75}
                 sizes="100vw"
              />
         </div>

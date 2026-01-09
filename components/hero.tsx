@@ -26,7 +26,8 @@ export default function Hero() {
           loop
           muted
           playsInline
-          preload="auto"
+          preload="metadata"
+          loading="lazy"
           className="h-full w-full object-cover lg:blur-none blur-sm"
           style={{ opacity: mounted ? 1 : 0, transition: 'opacity 0.3s ease-in-out' }}
           aria-hidden="true"

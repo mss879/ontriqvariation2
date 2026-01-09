@@ -8,6 +8,8 @@ const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
   preload: true,
+  variable: '--font-inter',
+  adjustFontFallback: true,
 });
 
 const stackSans = localFont({
@@ -15,6 +17,7 @@ const stackSans = localFont({
   variable: '--font-stack-sans',
   display: 'swap',
   preload: true,
+  adjustFontFallback: true,
 });
 
 const siteUrl = 'https://www.ontriq.com';
@@ -142,14 +145,20 @@ export default function RootLayout({
       <head>
         <meta name="theme-color" content="#000000" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <link rel="preconnect" href="https://framerusercontent.com" />
+        <link rel="preconnect" href="https://framerusercontent.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://framerusercontent.com" />
+        {/* Preload service images for faster navigation */}
+        <link rel="preload" href="/bgv-service.png" as="image" />
+        <link rel="preload" href="/Hr services.png" as="image" />
+        <link rel="preload" href="/Recruitment.png" as="image" />
+        <link rel="preload" href="/payroll.png" as="image" />
+        <link rel="preload" href="/company formation.png" as="image" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${inter.className} ${stackSans.variable}`}>
+      <body className={`${inter.className} ${stackSans.variable} antialiased`}>
         <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:rounded">
           Skip to main content
         </a>
