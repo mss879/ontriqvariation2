@@ -42,16 +42,6 @@ export default function SitemapPage() {
         { name: 'Specifications', href: '/technology/specifications' },
       ],
     },
-    {
-      title: 'Resources',
-      links: [
-        // Assuming admin exists but usually not in public sitemap unless requested. 
-        // User asked for "perfect sitepag page" adhering to rules.
-        // Hiding admin is better.
-        // If they have legal pages, they should go here.
-        { name: 'Admin Login', href: '/admin/login' },
-      ],
-    },
   ]
 
   return (
