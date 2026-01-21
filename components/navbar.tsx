@@ -17,14 +17,14 @@ import StaggeredMenu, { StaggeredMenuHandle } from './staggered-menu';
 
 const menuItems = [
   { label: 'Home', ariaLabel: 'Go to home page', link: '/' },
-  { 
-    label: 'About', 
-    ariaLabel: 'Learn about us', 
+  {
+    label: 'About',
+    ariaLabel: 'Learn about us',
     link: '/about'
   },
-  { 
-    label: 'Services', 
-    ariaLabel: 'View our services', 
+  {
+    label: 'Services',
+    ariaLabel: 'View our services',
     link: '#',
     children: [
       { label: 'BGV Services', ariaLabel: 'BGV Services', link: '/services/bgv' },
@@ -47,9 +47,9 @@ const menuItems = [
 ];
 
 const socialItems = [
-  { label: 'Twitter', link: 'https://twitter.com' },
-  { label: 'LinkedIn', link: 'https://linkedin.com' },
-  { label: 'Instagram', link: 'https://instagram.com' }
+  { label: 'Facebook', link: 'https://www.facebook.com/profile.php?id=61577141807829' },
+  { label: 'LinkedIn', link: 'https://linkedin.com/company/ontriq' },
+  { label: 'Instagram', link: 'https://www.instagram.com/ontriq._/' }
 ];
 
 export default function Navbar() {
@@ -94,26 +94,23 @@ export default function Navbar() {
   }, []);
 
   return (
-    <div className={`fixed left-0 right-0 z-50 flex w-full items-center transition-all duration-300 ${
-      isScrolled 
-        ? 'top-4 px-4 md:px-12 lg:px-16' 
+    <div className={`fixed left-0 right-0 z-50 flex w-full items-center transition-all duration-300 ${isScrolled
+        ? 'top-4 px-4 md:px-12 lg:px-16'
         : 'top-6 px-4 md:px-12 lg:px-16'
-    }`}>
-      <div className={`flex w-full items-center justify-between transition-all duration-300 ${
-        isScrolled 
-          ? 'rounded-2xl border border-gray-200 bg-white/95 shadow-lg backdrop-blur-md px-4 md:px-6 py-3' 
-          : 'px-0 py-0'
       }`}>
+      <div className={`flex w-full items-center justify-between transition-all duration-300 ${isScrolled
+          ? 'rounded-2xl border border-gray-200 bg-white/95 shadow-lg backdrop-blur-md px-4 md:px-6 py-3'
+          : 'px-0 py-0'
+        }`}>
         <div className="flex items-center">
-          <Link 
-            href="/" 
-            className={`flex items-center px-2 pb-1 overflow-hidden transition-all duration-300 ${
-              isContactPage 
-                ? '' 
-                : isScrolled
+          <Link
+            href="/"
+            className={`flex items-center px-2 pb-1 overflow-hidden transition-all duration-300 ${isContactPage
                 ? ''
-                : 'rounded-2xl border border-gray-200 bg-white/80 shadow-sm backdrop-blur-md'
-            }`}
+                : isScrolled
+                  ? ''
+                  : 'rounded-2xl border border-gray-200 bg-white/80 shadow-sm backdrop-blur-md'
+              }`}
             aria-label="Ontriq - Go to homepage"
           >
             <Image
@@ -128,28 +125,26 @@ export default function Navbar() {
         </div>
 
         <div
-          className={`hidden lg:flex items-center gap-20 xl:gap-24 px-5 py-2 transition-all duration-300 ${
-            useWhiteLinks
+          className={`hidden lg:flex items-center gap-20 xl:gap-24 px-5 py-2 transition-all duration-300 ${useWhiteLinks
               ? ''
               : isContactPage
-              ? ''
-              : isScrolled
-              ? ''
-              : 'rounded-xl border border-gray-200 bg-white/80 shadow-sm backdrop-blur-md'
-          }`}
+                ? ''
+                : isScrolled
+                  ? ''
+                  : 'rounded-xl border border-gray-200 bg-white/80 shadow-sm backdrop-blur-md'
+            }`}
           aria-label="Primary links"
         >
           <Link
             href="/about"
-            className={`text-xl font-semibold uppercase tracking-tighter leading-none transition-colors ${
-              useWhiteLinks
+            className={`text-xl font-semibold uppercase tracking-tighter leading-none transition-colors ${useWhiteLinks
                 ? isNavActive('/about')
                   ? 'text-white underline underline-offset-4'
                   : 'text-white/90 hover:text-white'
                 : isNavActive('/about')
-                ? 'text-black underline underline-offset-4'
-                : 'text-gray-900/90 hover:text-black'
-            }`}
+                  ? 'text-black underline underline-offset-4'
+                  : 'text-gray-900/90 hover:text-black'
+              }`}
           >
             About
           </Link>
@@ -157,15 +152,14 @@ export default function Navbar() {
             <DropdownMenuTrigger asChild>
               <button
                 type="button"
-                className={`text-xl font-semibold uppercase tracking-tighter leading-none transition-colors ${
-                  useWhiteLinks
+                className={`text-xl font-semibold uppercase tracking-tighter leading-none transition-colors ${useWhiteLinks
                     ? isNavActive('/services')
                       ? 'text-white underline underline-offset-4'
                       : 'text-white/90 hover:text-white'
                     : isNavActive('/services')
-                    ? 'text-black underline underline-offset-4'
-                    : 'text-gray-900/90 hover:text-black'
-                }`}
+                      ? 'text-black underline underline-offset-4'
+                      : 'text-gray-900/90 hover:text-black'
+                  }`}
                 aria-label="Services"
               >
                 Services
@@ -189,15 +183,14 @@ export default function Navbar() {
           </DropdownMenu>
           <Link
             href="/contact"
-            className={`text-xl font-semibold uppercase tracking-tighter leading-none transition-colors ${
-              useWhiteLinks
+            className={`text-xl font-semibold uppercase tracking-tighter leading-none transition-colors ${useWhiteLinks
                 ? isNavActive('/contact')
                   ? 'text-white underline underline-offset-4'
                   : 'text-white/90 hover:text-white'
                 : isNavActive('/contact')
-                ? 'text-black underline underline-offset-4'
-                : 'text-gray-900/90 hover:text-black'
-            }`}
+                  ? 'text-black underline underline-offset-4'
+                  : 'text-gray-900/90 hover:text-black'
+              }`}
           >
             Contact
           </Link>
@@ -205,15 +198,14 @@ export default function Navbar() {
 
 
 
-        <nav 
+        <nav
           ref={navRef}
-          className={`inline-flex items-center px-4 py-2 cursor-pointer ${
-            isContactPage 
-              ? '' 
-              : isScrolled
+          className={`inline-flex items-center px-4 py-2 cursor-pointer ${isContactPage
               ? ''
-              : 'rounded-xl border border-gray-200 bg-white/80 shadow-sm backdrop-blur-md'
-          }`}
+              : isScrolled
+                ? ''
+                : 'rounded-xl border border-gray-200 bg-white/80 shadow-sm backdrop-blur-md'
+            }`}
           onClick={handleContainerClick}
           aria-label="Main navigation"
         >

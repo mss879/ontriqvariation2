@@ -16,12 +16,11 @@ interface Message {
 function renderMessageContent(text: string) {
     // Map of known URLs to friendly names
     const friendlyNames: Record<string, string> = {
-        "https://facebook.com/ontriq": "Facebook",
-        "https://www.facebook.com/ontriq": "Facebook",
-        "https://twitter.com/ontriq": "Twitter/X",
-        "https://www.twitter.com/ontriq": "Twitter/X",
-        "https://instagram.com/ontriq": "Instagram",
-        "https://www.instagram.com/ontriq": "Instagram",
+        "https://www.facebook.com/profile.php?id=61577141807829": "Facebook",
+        "https://instagram.com/ontriq._/": "Instagram",
+        "https://www.instagram.com/ontriq._/": "Instagram",
+        "https://instagram.com/ontriq._": "Instagram",
+        "https://www.instagram.com/ontriq._": "Instagram",
         "https://linkedin.com/company/ontriq": "LinkedIn",
         "https://www.linkedin.com/company/ontriq": "LinkedIn",
         "https://www.ontriq.com/contact": "Contact Page",
@@ -296,20 +295,21 @@ export function AiChatWidget() {
 
                         {/* Input Area */}
                         <form onSubmit={handleSubmit} className="p-4 bg-white border-t border-gray-200">
-                            <div className="relative flex items-center">
+                            <div className="flex items-center gap-2">
                                 <input
                                     value={inputValue}
                                     onChange={(e) => setInputValue(e.target.value)}
                                     placeholder="Type your message..."
-                                    className="w-full bg-gray-50 border border-gray-200 text-gray-800 placeholder-gray-400 rounded-xl py-3 pl-4 pr-12 focus:outline-none focus:ring-2 focus:ring-[#0A1A2F]/20 focus:border-[#0A1A2F]/50 transition-all font-light"
+                                    className="flex-1 bg-gray-50 border border-gray-200 text-gray-800 placeholder-gray-400 rounded-xl py-3 px-4 focus:outline-none focus:ring-2 focus:ring-[#0A1A2F]/20 focus:border-[#0A1A2F]/50 transition-all font-light text-sm"
                                     disabled={isLoading}
                                 />
                                 <button
                                     type="submit"
                                     disabled={isLoading || !inputValue.trim()}
-                                    className="absolute right-2 p-2 bg-[#F75834] hover:bg-[#E5502F] text-[#0A1A2F] rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                                    className="flex items-center justify-center gap-2 px-3 sm:px-4 py-3 bg-[#0A1A2F] hover:bg-[#1a3050] text-white rounded-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-sm border border-[#F75834]/30 font-medium text-sm whitespace-nowrap min-w-[44px]"
                                 >
                                     <Send className="w-4 h-4" />
+                                    <span className="hidden sm:inline">Send</span>
                                 </button>
                             </div>
                         </form>

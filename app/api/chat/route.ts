@@ -1,14 +1,35 @@
 import { openai } from '@ai-sdk/openai';
 import { generateText } from 'ai';
 import { SYSTEM_PROMPT } from '@/lib/ai-context';
+import { rateLimit } from '@/lib/rate-limit';
 
 // Allow responses up to 30 seconds
 export const maxDuration = 30;
+
+// Rate limiter: 5 requests per minute per IP
+const limiter = rateLimit({
+    interval: 60 * 1000, // 60 seconds
+    uniqueTokenPerInterval: 500, // Max 500 unique IPs per minute
+});
 
 export async function POST(req: Request) {
     console.log('=== Chat API called ===');
 
     try {
+        // 1. Rate Limiting Strategy
+        const ip = req.headers.get('x-forwarded-for') || 'unknown';
+        const token = ip; // Use IP as the unique token
+
+        try {
+            await limiter.check(5, token); // 5 requests per minute
+        } catch {
+            console.warn(`Rate limit exceeded for IP: ${ip}`);
+            return new Response(JSON.stringify({ error: 'Too many requests. Please try again later.' }), {
+                status: 429,
+                headers: { 'Content-Type': 'application/json' },
+            });
+        }
+
         const apiKey = process.env.OPENAI_API_KEY;
 
         if (!apiKey) {
@@ -74,7 +95,7 @@ export async function POST(req: Request) {
 
         return new Response(JSON.stringify({
             error: 'Internal server error',
-            details: error instanceof Error ? error.message : String(error)
+            message: 'An unexpected error occurred. Please try again later.'
         }), {
             status: 500,
             headers: { 'Content-Type': 'application/json' },

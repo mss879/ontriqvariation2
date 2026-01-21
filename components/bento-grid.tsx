@@ -158,7 +158,7 @@ const BentoGrid = memo(function BentoGrid() {
                     </p>
                   </div>
                 </div>
-                <a href="#contact" className="group inline-flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.35em] text-white">
+                <a href="/contact" className="group inline-flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.35em] text-white">
                   Get started
                   <span className="flex h-10 w-10 items-center justify-center rounded-full transition-all duration-300 group-hover:translate-x-1" style={{ background: '#ff502e' }}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-up-right h-5 w-5" aria-hidden="true">

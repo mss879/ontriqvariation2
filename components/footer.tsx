@@ -9,8 +9,8 @@ export function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-20">
           {/* Brand Column */}
           <div className="lg:col-span-4 space-y-8">
-            <Link 
-              href="/" 
+            <Link
+              href="/"
               className="inline-flex items-center px-2 pb-1 overflow-hidden rounded-2xl border border-gray-200 bg-white/80 shadow-sm backdrop-blur-md w-fit"
               aria-label="Ontriq - Go to homepage"
             >
@@ -28,9 +28,8 @@ export function Footer() {
             </p>
             <nav aria-label="Social media links">
               <ul className="flex gap-4">
-                <li><SocialLink href="https://facebook.com/ontriq" icon={Facebook} label="Follow us on Facebook" /></li>
-                <li><SocialLink href="https://twitter.com/ontriq" icon={Twitter} label="Follow us on Twitter" /></li>
-                <li><SocialLink href="https://instagram.com/ontriq" icon={Instagram} label="Follow us on Instagram" /></li>
+                <li><SocialLink href="https://www.facebook.com/profile.php?id=61577141807829" icon={Facebook} label="Follow us on Facebook" /></li>
+                <li><SocialLink href="https://www.instagram.com/ontriq._/" icon={Instagram} label="Follow us on Instagram" /></li>
                 <li><SocialLink href="https://linkedin.com/company/ontriq" icon={Linkedin} label="Connect on LinkedIn" /></li>
               </ul>
             </nav>
@@ -84,15 +83,15 @@ export function Footer() {
           <p>
             © {new Date().getFullYear()} Ontriq. All rights reserved.
           </p>
-          
+
           <div className="flex items-center gap-2">
             <span>Made by</span>
             <Link href="https://www.arcai.agency" target="_blank" rel="noopener noreferrer">
-              <Image 
-                src="/arcai-logo.png" 
-                alt="ARC AI" 
-                width={44} 
-                height={44} 
+              <Image
+                src="/arcai-logo.png"
+                alt="ARC AI"
+                width={44}
+                height={44}
                 className="h-11 w-auto"
                 loading="lazy"
               />
@@ -117,7 +116,7 @@ export function Footer() {
 
 function SocialLink({ href, icon: Icon, label }: { href: string; icon: any; label: string }) {
   return (
-    <Link 
+    <Link
       href={href}
       className="w-10 h-10 rounded-full bg-zinc-900 flex items-center justify-center text-zinc-400 hover:bg-[#F75834] hover:text-white transition-all duration-300"
       aria-label={label}
@@ -132,8 +131,8 @@ function SocialLink({ href, icon: Icon, label }: { href: string; icon: any; labe
 function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
     <li>
-      <Link 
-        href={href} 
+      <Link
+        href={href}
         className="text-zinc-400 hover:text-[#F75834] transition-colors inline-flex items-center gap-2 group"
       >
         <span className="w-0 group-hover:w-2 h-[1px] bg-[#F75834] transition-all duration-300"></span>

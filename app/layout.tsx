@@ -85,13 +85,7 @@ export const metadata: Metadata = {
       },
     ],
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Ontriq | Sri Lanka\'s Premier Background Verification & HR Solutions',
-    description: siteDescription,
-    images: ['/share-img.png'],
-    creator: '@ontriq',
-  },
+
   alternates: {
     canonical: siteUrl,
   },
@@ -113,9 +107,9 @@ const jsonLd = {
     name: 'Konnect BPO Technologies (PVT) LTD',
   },
   sameAs: [
-    'https://twitter.com/ontriq',
+    'https://www.facebook.com/profile.php?id=61577141807829',
     'https://linkedin.com/company/ontriq',
-    'https://instagram.com/ontriq',
+    'https://www.instagram.com/ontriq._/',
   ],
   contactPoint: {
     '@type': 'ContactPoint',
