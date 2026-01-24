@@ -10,11 +10,13 @@ export default function HeroPromptBar() {
   const [typingSpeed, setTypingSpeed] = useState(100);
 
   const phrases = [
-    'Background Verification Services',
-    'Human Resource Solutions',
-    'Talent Recruitment',
-    'Payroll Management',
-    'Business Formation and Setup'
+    'Background Verification (BGV)',
+    'Human Resource Management',
+    'Talent Acquisition & Recruitment',
+    'Payroll Processing & Administration',
+    'Business Formation & Regulatory Setup',
+    'Startup Support Services',
+    'Director Services'
   ];
 
   useEffect(() => {
@@ -67,27 +69,30 @@ export default function HeroPromptBar() {
             </div>
           </div>
 
-          <div className="mb-4 min-h-[60px] rounded-lg border border-white/10 bg-black/50 px-4 py-4 backdrop-blur-sm">
+          <div className="mb-4 h-[90px] overflow-hidden rounded-lg border border-white/10 bg-black/50 px-4 py-4 backdrop-blur-sm">
             <p className="text-lg font-medium text-white/80">
               {text}
               <span className="animate-blink">|</span>
             </p>
           </div>
 
-          <div className="flex items-center justify-between">
-            <div className="flex flex-wrap gap-2">
-              <button className="rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-white/80 backdrop-blur-sm transition-all hover:bg-white/10">
+          <div className="flex items-center justify-between gap-2">
+            <div 
+              className="flex flex-nowrap items-center gap-2 overflow-x-auto no-scrollbar" 
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
+              <button className="shrink-0 whitespace-nowrap rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-xs sm:px-4 sm:py-2 sm:text-sm font-medium text-white/80 backdrop-blur-sm transition-all hover:bg-white/10">
                 BGV
               </button>
-              <button className="rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-white/80 backdrop-blur-sm transition-all hover:bg-white/10">
+              <button className="shrink-0 whitespace-nowrap rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-xs sm:px-4 sm:py-2 sm:text-sm font-medium text-white/80 backdrop-blur-sm transition-all hover:bg-white/10">
                 HR Solutions
               </button>
-              <button className="rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-white/80 backdrop-blur-sm transition-all hover:bg-white/10">
+              <button className="shrink-0 whitespace-nowrap rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-xs sm:px-4 sm:py-2 sm:text-sm font-medium text-white/80 backdrop-blur-sm transition-all hover:bg-white/10">
                 Payroll
               </button>
             </div>
 
-            <button className="group relative overflow-hidden rounded-lg p-[1px]">
+            <button className="shrink-0 group relative overflow-hidden rounded-lg p-[1px]">
               <div 
                 className="absolute inset-0" 
                 style={{
@@ -101,7 +106,7 @@ export default function HeroPromptBar() {
                   alt="Send"
                   className="h-5 w-5"
                 />
-                <span className="text-sm font-medium text-white">Send</span>
+                <span className="hidden sm:inline text-sm font-medium text-white">Send</span>
               </div>
             </button>
           </div>
