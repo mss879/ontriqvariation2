@@ -294,7 +294,7 @@ export function AiChatWidget() {
                         </div>
 
                         {/* Input Area */}
-                        <form onSubmit={handleSubmit} className="p-4 bg-white border-t border-gray-200">
+                        <form onSubmit={handleSubmit} className="px-4 pt-4 pb-2 bg-white border-t border-gray-200">
                             <div className="flex items-center gap-2">
                                 <input
                                     value={inputValue}
@@ -311,6 +311,9 @@ export function AiChatWidget() {
                                     <Send className="w-4 h-4" />
                                     <span className="hidden sm:inline">Send</span>
                                 </button>
+                            </div>
+                            <div className="text-center mt-1">
+                                <span className="text-[10px] text-gray-400 font-medium">Powered by ARC AI</span>
                             </div>
                         </form>
                     </motion.div>
