@@ -102,12 +102,7 @@ export function Footer() {
             Powered by Next.js
           </p>
 
-          <Link
-            href="/admin/login"
-            className="text-zinc-400 hover:text-[#F75834] transition-colors"
-          >
-            Admin
-          </Link>
+          {/* Admin link hidden */}
         </div>
       </div>
     </footer>

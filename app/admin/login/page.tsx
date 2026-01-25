@@ -129,13 +129,9 @@ export default function AdminLoginPage() {
                   <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
                 </button>
 
-                {error ? (
+                {error && (
                   <p role="status" aria-live="polite" className="text-sm text-red-600">
                     {error}
-                  </p>
-                ) : (
-                  <p className="text-sm text-slate-500">
-                    No account creation here — admin users are created in Supabase.
                   </p>
                 )}
               </form>
