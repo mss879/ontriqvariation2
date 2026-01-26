@@ -5,9 +5,15 @@ import type { FormEvent } from 'react';
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
-import { Mail, MapPin, User, ArrowRight } from "lucide-react"
+import { Mail, MapPin, User, ArrowRight, Calendar as CalendarIcon } from "lucide-react"
 import { motion } from "framer-motion"
 import emailjs from '@emailjs/browser';
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
 
 type SubmitStatus = 'idle' | 'sending' | 'success' | 'error';
 
@@ -141,6 +147,38 @@ export const ContactSection = memo(function ContactSection() {
                             <div className="text-slate-500 pl-12">
                                 <p>107 Colombo - Galle Main Rd,</p>
                                 <p>Dehiwala-Mount Lavinia Sri Lanka</p>
+                            </div>
+                        </div>
+
+                        {/* Book a Meeting */}
+                        <div className="space-y-2">
+                            <div className="flex items-center gap-3 text-slate-900 font-semibold text-xl">
+                                <div className="p-2 rounded-full bg-orange-100 text-[#F75834]" aria-hidden="true">
+                                    <CalendarIcon className="h-5 w-5" />
+                                </div>
+                                Book a Meeting
+                            </div>
+                            <div className="pl-12">
+                                <p className="text-slate-500 mb-2">
+                                    Schedule a 30-minute call with our team.
+                                </p>
+                                <Dialog>
+                                    <DialogTrigger asChild>
+                                        <button className="inline-flex items-center gap-2 text-[#F75834] font-medium hover:underline">
+                                            Schedule Now <ArrowRight className="h-4 w-4" />
+                                        </button>
+                                    </DialogTrigger>
+                                    <DialogContent className="sm:max-w-[800px] h-[600px] p-0 overflow-hidden bg-white">
+                                        <DialogTitle className="sr-only">Book a Meeting</DialogTitle>
+                                        <iframe 
+                                            src="https://calendly.com/ontriq-info-vkls/30min" 
+                                            width="100%" 
+                                            height="100%" 
+                                            frameBorder="0" 
+                                            title="Schedule a meeting"
+                                        ></iframe>
+                                    </DialogContent>
+                                </Dialog>
                             </div>
                         </div>
 
